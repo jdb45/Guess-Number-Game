@@ -8,8 +8,10 @@ class TestGuessTheNumber(unittest.TestCase):
     def test_check_guess(self):
 
         self.assertEqual('guess is too low!', Guess_The_Number.check_guess(2, 4))
+        self.assertEqual('guess is too low!', Guess_The_Number.check_guess(3, 7))
 
         self.assertEqual('guess is too high!', Guess_The_Number.check_guess(7, 2))
+        self.assertEqual('guess is too high!', Guess_The_Number.check_guess(10, 4))
 
     # testing to make sure the random number generator is assigning a number in-between the right range
     def test_random_number(self):
