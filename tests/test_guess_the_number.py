@@ -1,21 +1,18 @@
 import unittest
-from unittest.mock import patch, call
 from guess_the_number import Guess_The_Number
 
 
 class TestGuessTheNumber(unittest.TestCase):
 
+    # testing to make sure the check guess function is correctly displaying the right message
+    def test_check_guess(self):
 
-    @patch('Guess_The_Number.get_random_Number', return_value=4)
-    @patch('Guess_The_Number.get_user_input', side_effect=[3, 10, 4])
-    @patch('builtins.print')
+        self.assertEqual('guess is too low!', Guess_The_Number.check_guess(2, 4))
 
-    def test_play_game(self, mock_print, mock_input):
-        Guess_The_Number.main()
+        self.assertEqual('guess is too high!', Guess_The_Number.check_guess(7, 2))
 
-        expected_calls = [call(3), call(10)]
-        self.assertEqual(expected_calls, mock_input.call_args_list)
-
-
-if __name__ == '__main__':
-    unittest.main()
+    # testing to make sure the random number generator is assigning a number in-between the right range
+    def test_random_number(self):
+        range_list = range(1, 10)
+        get_random_num = Guess_The_Number.get_random_Number()
+        self.assertIn(get_random_num, range_list)

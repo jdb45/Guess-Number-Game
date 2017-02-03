@@ -1,1 +1,5 @@
 *.pyc
+guess_the_number/__pycache__/
+tests/__pycache__/
+.idea
+
